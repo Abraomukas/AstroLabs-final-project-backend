@@ -1,0 +1,6 @@
+### NODE ###
+node_modules
+package-lock.json
+
+### APP ###
+.env

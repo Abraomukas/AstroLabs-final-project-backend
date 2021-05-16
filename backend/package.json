@@ -1,0 +1,37 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": "14.x"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "nodemon": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Abraomukas/astrolabs-final-project-backend.git"
+  },
+  "author": "Brown Gazelles",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Abraomukas/astrolabs-final-project-backend/issues"
+  },
+  "homepage": "https://github.com/Abraomukas/astrolabs-final-project-backend#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cloudinary": "^1.25.1",
+    "cors": "^2.8.5",
+    "dotenv": "^9.0.2",
+    "express": "^4.17.1",
+    "express-form-data": "^2.0.16",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.9",
+    "nodemon": "^2.0.7",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0"
+  }
+}
