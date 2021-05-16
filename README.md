@@ -19,7 +19,3 @@ You and your canine companion will never bark at the wrong tree again!s
 ![](https://img.shields.io/badge/-Express-informational?style=flat&logo=express&logoColor=white&color=darkgreen)
 ![](https://img.shields.io/badge/-React-informational?style=flat&logo=react&logoColor=white&color=darkgreen)
 ![](https://img.shields.io/badge/-Node.js-informational?style=flat&logo=node.js&logoColor=white&color=darkgreen)
-
-## Usage
-
-Click <a href="https://hopeful-beaver-9420dd.netlify.app/">here</a> to take a look at the project's current state on **Netlify**.
