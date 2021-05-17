@@ -95,6 +95,8 @@ In order to contribute to this project, all you need to do is follow these steps
 
 - Consider the people who will read your code, and make it look nice for them.
 
+- NEVER use numbers when it comes to naming branches, methods, variables, classes, ... (). Pretty much everything.
+
 - Make sure all your commits are atomic (one feature per commit).
 
 - Always write a clear log message for your commits. One-line messages are fine for small changes, but bigger changes should look like this:
