@@ -26,7 +26,7 @@ In order to contribute to this project, all you need to do is follow these steps
     git checkout -b "<meaningful-branch-name>"
     ```
 
-    When it comes to naming your branch, bare in mind it should be meaningful enough as for your tea mmates to know what you are up to. Read the **Coding conventions** below for some guidelines.
+    When it comes to naming your branch, bare in mind it should be meaningful enough as for your teammates to know what you are up to. Read the **Coding conventions** below for some guidelines.
     
     After creating your branch, run the following command to let _Git_ know there is a new branch:
 
