@@ -14,18 +14,31 @@ const HumansSchema = new mongoose.Schema(
             type: String,
             required: true
         },
+        contactNumber: {
+            type: Number,
+            required: true
+        },
         avatar: {
             type: String
         },
         age: {
-            type: Number
+            type: Number,
+            required: true
+        },
+        gender: {
+            type: String,
+            required: true
+        },
+        dateOfBirth: {
+            type: Number,
+            required: true
         },
         likes: {
             type: String,
             required: true
 
         },
-        hates: {
+        does_not_like: {
             type: String,
             required: true
         }
