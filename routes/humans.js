@@ -39,7 +39,11 @@ router.post(
             name: req.body.name,
             surname: req.body.surname,
             email: req.body.email,
+            contactNumber: req.body.contactNumber,
+            avatar: req.body.avatar,
             age: req.body.age,
+            gender: req.body.gender,
+            dateOfBirth: req.body.dateOfBirth,
             likes: req.body.likes,
             does_not_like: req.body.does_not_like
         }
