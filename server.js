@@ -6,6 +6,52 @@ const mongoose = require('mongoose');
 const cloudinary = require('cloudinary').v2;
 // import the dotenv library
 require('dotenv').config();
+// import the express form data library
+const expressFormData = require('express-form-data');
+// import the cors library
+const cors = require('cors');
+// import the passport library for authentication
+const passport = require('passport');
+// imports for JWT
+const JwtStrategy = require('passport-jwt').Strategy;
+const ExtractJwt = require('passport-jwt').ExtractJwt;
+
+// reference the secret for the JWT
+const jwtSecret = process.env.JWT_SECRET;
+
+const passportJwtConfig = {
+    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+    secretOrKey: jwtSecret
+}
+
+// function that reads the payload of the JWT
+const passportJwt = (passport) => {
+    // configure passport to use passport-jwt
+    passport.use(
+        new JwtStrategy(
+            passportJwtConfig,
+            (jwtPayload, done) => {
+                // find and extract the user by their id, which is inside the JWT
+                HumansModel
+                    .findOne({ _id: jwtPayload.id })
+                    .then(
+                        // if the document is found
+                        (dbDocument) => {
+                            return done(null, dbDocument);
+                        }
+                    )
+                    .catch(
+                        (error) => {
+                            return done(null, null);
+                        }
+                    );
+            }
+        )
+    );
+}
+
+passportJwt(passport);
+
 
 const doggosRoutes = require('./routes/doggos');
 const humansRoutes = require('./routes/humans');
@@ -20,8 +66,14 @@ const conn_config = {
     useUnifiedTopology: true
 };
 
+// configuure express to read HTTP's body
 server.use(express.urlencoded({ extended: false }));
 server.use(express.json());
+// configure express to read form data
+server.use(expressFormData.parse());
+
+// allow Cross-Origin resource sharing
+server.use(cors());
 
 mongoose
     .connect(db_connection, conn_config)
@@ -34,7 +86,16 @@ mongoose
         (error) => {
             console.log("MongoDB error!", error);
         }
-    )
+    );
+
+// configuration for Cloudinary
+cloudinary.config(
+    {
+        cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+        api_key: process.env.CLOUDINARY_API_KEY,
+        api_secret: process.env.CLUDINARY_API_SECRET
+    }
+);
 
 // all requests that go through .../doggos/
 server.use(
