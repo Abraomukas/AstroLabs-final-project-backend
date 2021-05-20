@@ -14,6 +14,10 @@ const HumansSchema = new mongoose.Schema(
             type: String,
             required: true
         },
+        contactNumber: {
+            type: Number,
+            required: true
+        },
         avatar: {
             type: String
         },
