@@ -25,7 +25,7 @@ const HumansSchema = new mongoose.Schema(
             required: true
 
         },
-        does_not_like: {
+        hates: {
             type: String,
             required: true
         }
