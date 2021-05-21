@@ -1,8 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const cloudinary = require('cloudinary').v2;
+const bcryptjs = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
+const jwtSecret = process.env.JWT_SECRET;
 
-const HumansModel = require('../models/HumansModel')
+
+const HumansModel = require('../models/HumansModel');
 
 // ...humans/find
 router.get(
@@ -36,12 +41,12 @@ router.post(
 
         // data to be captured (via Postman or the browser)
         const formData = {
-            avatar: req.body.avatar,
-            name: req.body.name,
-            surname: req.body.surname,
-            email: req.body.email,
-            age: req.body.age,
-            likes: req.body.likes
+            "avatar": req.body.avatar,
+            "name": req.body.name,
+            "surname": req.body.surname,
+            "email": req.body.email,
+            "age": req.body.age,
+            "likes": req.body.likes
         }
 
         // new instance of HumansModel
@@ -70,6 +75,7 @@ router.post(
                                 theFiles[0].path,
                                 (cloudinaryErr, cloudinaryRes) => {
                                     if (cloudinaryErr) {
+                                        console.log("Something exploded when we tried to upload your avatar to Cloudinary!");
                                         console.log(cloudinaryErr);
                                     } else {
                                         newHumansModel.avatar = cloudinaryRes.url;
@@ -98,6 +104,7 @@ router.post(
                                             )
                                             .catch(
                                                 (error) => {
+                                                    console.log("Something exploded when we tried to secure your password!");
                                                     res.send(error);
                                                 }
                                             );
@@ -111,6 +118,7 @@ router.post(
             // if MongoDB is M.I.A.
             .catch(
                 (error) => {
+                    console.log("MongoDB, are you there?");
                     console.log('error', error);
                     res.send(error);
                 }
