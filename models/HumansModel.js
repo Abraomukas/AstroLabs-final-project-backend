@@ -17,12 +17,15 @@ const HumansSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        age: {
-            type: Number
-        },
-        likes: {
-            type: String,
+        password: {
+            type: string,
             required: true
+        },
+        contact: {
+            type: String
+        },
+        address: {
+            type: String
         }
     }
 );

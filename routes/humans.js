@@ -41,12 +41,13 @@ router.post(
 
         // data to be captured (via Postman or the browser)
         const formData = {
-            "avatar": req.body.avatar,
-            "name": req.body.name,
-            "surname": req.body.surname,
-            "email": req.body.email,
-            "age": req.body.age,
-            "likes": req.body.likes
+            avatar: req.body.avatar,
+            name: req.body.name,
+            surname: req.body.surname,
+            email: req.body.email,
+            password: req.body.age,
+            contact: req.body.likes,
+            address: req.body.address
         }
 
         // new instance of HumansModel
