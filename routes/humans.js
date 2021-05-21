@@ -36,12 +36,12 @@ router.post(
 
         // data to be captured (via Postman or the browser)
         const formData = {
+            avatar: req.body.avatar,
             name: req.body.name,
             surname: req.body.surname,
             email: req.body.email,
             age: req.body.age,
-            likes: req.body.likes,
-            does_not_like: req.body.does_not_like
+            likes: req.body.likes
         }
 
         // new instance of HumansModel
@@ -53,16 +53,21 @@ router.post(
         })
             // of the connection to MongoDB is working
             .then(
-                (dbDocument) => {
+                async (dbDocument) => {
                     // if the email is in the database already >>> rejection
                     if (dbDocument) {
                         res.send("This email is already associated with another account!");
                     }
                     // if the email is not in the database >>> registration
                     else {
-                        if (Object.values(req.files).length > 0) {
-                            cloudinary.uploader.upload(
-                                files[0].path,
+                        // if an image is provided >>> upload to Cloudinary
+                        const theFiles = Object.values(req.files);
+
+                        if (theFiles.length > 0) {
+
+                            // upload to Cloudinary
+                            await cloudinary.uploader.upload(
+                                theFiles[0].path,
                                 (cloudinaryErr, cloudinaryRes) => {
                                     if (cloudinaryErr) {
                                         console.log(cloudinaryErr);
@@ -74,11 +79,11 @@ router.post(
                         }
                         // generate salt with bcryptjs
                         bcryptjs.genSalt(
-                            (err, salt) => {
+                            (err, theSalt) => {
                                 // hash the password with the salt
                                 bcryptjs.hash(
                                     formData.password,
-                                    salt,
+                                    theSalt,
                                     (err, hashedPassword) => {
                                         // replace the original password with its encrypted version
                                         newHumansModel.password = hashedPassword;

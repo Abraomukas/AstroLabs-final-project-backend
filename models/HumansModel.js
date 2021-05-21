@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 
 const HumansSchema = new mongoose.Schema(
     {
+        avatar: {
+            type: String
+        },
         name: {
             type: String,
             required: true
@@ -14,18 +17,10 @@ const HumansSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        avatar: {
-            type: String
-        },
         age: {
             type: Number
         },
         likes: {
-            type: String,
-            required: true
-
-        },
-        hates: {
             type: String,
             required: true
         }
