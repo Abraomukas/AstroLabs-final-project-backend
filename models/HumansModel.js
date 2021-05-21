@@ -15,7 +15,7 @@ const HumansSchema = new mongoose.Schema(
             required: true
         },
         contactNumber: {
-            type: Number,
+            type: String,
             required: true
         },
         avatar: {
