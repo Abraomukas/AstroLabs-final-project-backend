@@ -45,8 +45,8 @@ router.post(
             name: req.body.name,
             surname: req.body.surname,
             email: req.body.email,
-            password: req.body.age,
-            contact: req.body.likes,
+            password: req.body.password,
+            contact: req.body.contact,
             address: req.body.address
         }
 
